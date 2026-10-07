@@ -1,0 +1,249 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 48px 20px;
+}
+
+.home-header {
+  width: min(560px, 100%);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.home-kicker {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.home h1 {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 5vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.home-lead {
+  margin: 0 auto;
+  max-width: 42ch;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.page-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(560px, 100%);
+}
+
+.page-list a,
+.back-link {
+  color: var(--text-h);
+  text-decoration: none;
+  border-radius: 8px;
+  background: var(--social-bg);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.page-list a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  text-align: left;
+}
+
+.page-card-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+.page-card-icon svg,
+.page-card-arrow svg {
+  width: 22px;
+  height: 22px;
+}
+
+.page-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.page-card-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.page-card-desc {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.page-card-arrow {
+  display: grid;
+  place-items: center;
+  margin-left: auto;
+  color: var(--text);
+  transition: transform 0.2s, color 0.2s;
+}
+
+.page-list a:hover,
+.back-link:hover {
+  box-shadow: var(--shadow);
+}
+
+.page-list a:hover {
+  border-color: var(--accent-border);
+}
+
+.page-list a:hover .page-card-arrow {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 32px 24px;
+  text-align: left;
+}
+
+.page-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.view-toggle {
+  display: inline-flex;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--social-bg);
+}
+
+.view-toggle button {
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.view-toggle button[aria-pressed='true'] {
+  background: var(--accent);
+  color: #fff;
+}
+
+.code-view {
+  margin: 0;
+  padding: 16px 18px;
+  overflow: auto;
+  max-height: calc(100vh - 160px);
+  background: var(--code-bg);
+  color: var(--text-h);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.55;
+  white-space: pre;
+}
+
+.back-link {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 6px 12px;
+  font-size: 15px;
+}
+
+.site-footer {
+  margin-top: auto;
+  padding: 0 24px 32px;
+}
+
+.site-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding-top: 20px;
+  border-top: 1px solid color-mix(in srgb, var(--text-h) 12%, transparent);
+}
+
+.site-footer-copy {
+  color: var(--text);
+  font-size: 10px;
+  letter-spacing: 0.02em;
+}
+
+.site-footer-name {
+  margin: 0 8px;
+  color: var(--text-h);
+  font-weight: 700;
+}
+
+.site-footer-social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-footer-social a {
+  display: inline-flex;
+  color: var(--text);
+}
+
+.site-footer-social a:hover {
+  color: var(--text-h);
+}
+
+.site-footer-social svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+@media (min-width: 768px) {
+  .site-footer-inner {
+    flex-direction: row;
+  }
+
+  .site-footer-copy {
+    font-size: 12px;
+  }
+}
+

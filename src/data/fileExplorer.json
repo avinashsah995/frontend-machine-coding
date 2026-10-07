@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "name": "public",
+    "isFolder": true,
+    "children": [
+      {
+        "id": 2,
+        "name": "favicon",
+        "isFolder": true,
+        "children": [
+          {
+            "id": 3,
+            "name": "favicon.ico",
+            "isFolder": false
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "icons.svg",
+        "isFolder": false
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "src",
+    "isFolder": true,
+    "children": [
+      {
+        "id": 6,
+        "name": "assets",
+        "isFolder": true,
+        "children": [
+          {
+            "id": 7,
+            "name": "hero.png",
+            "isFolder": false
+          },
+          {
+            "id": 8,
+            "name": "react.svg",
+            "isFolder": false
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "data",
+        "isFolder": true,
+        "children": [
+          {
+            "id": 10,
+            "name": "data.json",
+            "isFolder": false
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "name": "App.css",
+        "isFolder": false
+      },
+      {
+        "id": 12,
+        "name": "App.jsx",
+        "isFolder": false
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "index.html",
+    "isFolder": false
+  },
+  {
+    "id": 14,
+    "name": "package.json",
+    "isFolder": false
+  },
+  {
+    "id": 15,
+    "name": "README.md",
+    "isFolder": false
+  }
+]

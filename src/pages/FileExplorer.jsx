@@ -22,15 +22,7 @@ const ListNodes = ({ nodes, handleAddNode, handleDeleteNode }) => {
             <div className="nodes">
               <span onClick={() => handleExpand(node.id)}>
                 {node.isFolder && (
-                  <span
-                    style={{
-                      cursor: "pointer",
-                      marginRight: "5px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    {isExpand[node.id] ? "📂" : "📁"}
-                  </span>
+                  <span>{isExpand[node.id] ? "📂" : "📁"}</span>
                 )}
                 <span>{node.name}</span>
               </span>
@@ -39,24 +31,12 @@ const ListNodes = ({ nodes, handleAddNode, handleDeleteNode }) => {
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/4732/4732392.png"
                     alt=""
-                    style={{
-                      width: "14px",
-                      height: "14px",
-                      cursor: "pointer",
-                      marginLeft: "10px",
-                    }}
                     onClick={() => handleAddNode(node.id, true)}
                   />
 
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/1091/1091585.png"
                     alt=""
-                    style={{
-                      width: "14px",
-                      height: "14px",
-                      cursor: "pointer",
-                      marginLeft: "10px",
-                    }}
                     onClick={() => handleAddNode(node.id, false)}
                   />
                 </>
@@ -64,12 +44,6 @@ const ListNodes = ({ nodes, handleAddNode, handleDeleteNode }) => {
               <img
                 src="https://cdn-icons-png.flaticon.com/512/8567/8567786.png"
                 alt=""
-                style={{
-                  width: "14px",
-                  height: "14px",
-                  cursor: "pointer",
-                  marginLeft: "10px",
-                }}
                 onClick={() => handleDeleteNode(node.id)}
               />
             </div>

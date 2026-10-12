@@ -4,11 +4,43 @@ import FileExplorer from './pages/FileExplorer'
 import GridLight from './pages/GridLight'
 import OTPInput from './pages/OTPInput'
 import KanbanBoard from './pages/KanbanBoard'
+import TabFormComponent from './pages/TabFormComponent'
+import AutoCompleteSearch from './pages/AutoCompleteSearch'
+import InputChip from './pages/InputChip'
+import Accordion from './pages/Accordion'
+import NestedCheckboxes from './pages/NestedCheckboxes'
+import ProgressBar from './pages/ProgressBar'
+import Pagination from './pages/Pagination'
+import ToDoList from './pages/ToDoList'
 import fileExplorerCode from './pages/FileExplorer.jsx?raw'
 import gridLightCode from './pages/GridLight.jsx?raw'
 import otpInputCode from './pages/OTPInput.jsx?raw'
 import kanbanBoardCode from './pages/KanbanBoard.jsx?raw'
+import tabFormComponentCode from './pages/TabFormComponent.jsx?raw'
+import autoCompleteSearchCode from './pages/AutoCompleteSearch.jsx?raw'
+import inputChipCode from './pages/InputChip.jsx?raw'
+import accordionCode from './pages/Accordion.jsx?raw'
+import nestedCheckboxesCode from './pages/NestedCheckboxes.jsx?raw'
+import progressBarCode from './pages/ProgressBar.jsx?raw'
+import paginationCode from './pages/Pagination.jsx?raw'
+import toDoListCode from './pages/ToDoList.jsx?raw'
 import './App.css'
+
+function ArrowIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M5 12h14" />
+      <path d="M13 6l6 6-6 6" />
+    </svg>
+  )
+}
 
 function FolderIcon() {
   return (
@@ -50,49 +82,264 @@ function KanbanIcon() {
   )
 }
 
-function ArrowIcon() {
+function TabFormComponentIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
-      <path d="M5 12h14" />
-      <path d="M13 6l6 6-6 6" />
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 9.25V7.15A1.4 1.4 0 0 1 4.4 5.75H8.6A1.4 1.4 0 0 1 10 7.15V9.25H19.1A1.75 1.75 0 0 1 20.85 11v6.6a1.75 1.75 0 0 1-1.75 1.75H4.75A1.75 1.75 0 0 1 3 17.6V9.25z" />
+      <path d="M11.35 9.25V7.15A1.15 1.15 0 0 1 12.5 6h2.1a1.15 1.15 0 0 1 1.15 1.15V9.25" />
+      <path d="M17.1 9.25V7.15A1.15 1.15 0 0 1 18.25 6h1.45A1.15 1.15 0 0 1 20.85 7.15V9.25" />
+      <path d="M6.25 13h9.5" />
+      <path d="M6.25 16.25h6" />
+    </svg>
+  )
+}
+
+function AutoCompleteSearchIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="m15.2 15.2 4.8 4.8" />
+      <path d="M7.75 10.5h5.5" />
+    </svg>
+  )
+}
+
+function InputChipIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="3.5" width="18" height="6.5" rx="1.75" />
+      <path d="M6.5 6.75h7" />
+      <rect x="3" y="13" width="8" height="6.5" rx="3.25" />
+      <rect x="13" y="13" width="8" height="6.5" rx="3.25" />
+    </svg>
+  )
+}
+
+function AccordionIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="2.75" width="18" height="5" rx="1.25" />
+      <path d="M16.4 5.25h2.2" />
+      <path d="M17.5 4.15v2.2" />
+      <rect x="3" y="9" width="18" height="6.5" rx="1.25" />
+      <path d="M6 11.25h6.5" />
+      <path d="M6 13.5h4" />
+      <path d="M16.4 12.25h2.2" />
+      <rect x="3" y="16.75" width="18" height="5" rx="1.25" />
+      <path d="M16.4 19.25h2.2" />
+      <path d="M17.5 18.15v2.2" />
+    </svg>
+  )
+}
+
+function NestedCheckboxesIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="3" width="4.5" height="4.5" rx="1" />
+      <path d="m4.1 5.25 1.05 1.1 1.6-2" />
+      <path d="M10 5.25h10" />
+      <path d="M5.25 7.5v8.5" />
+      <path d="M5.25 11.9h2" />
+      <rect x="7.25" y="9.75" width="4.25" height="4.25" rx="1" />
+      <path d="M13.75 11.9h6.5" />
+      <path d="M5.25 16h2" />
+      <rect x="7.25" y="16.25" width="4.25" height="4.25" rx="1" />
+      <path d="m8.3 18.4 1 1.05 1.5-1.9" />
+      <path d="M13.75 18.4h6.5" />
+    </svg>
+  )
+}
+
+function ProgressBarIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="2.5" y="8.75" width="19" height="6.5" rx="3.25" />
+      <path d="M5.5 12h8.5" strokeWidth="2.5" />
+    </svg>
+  )
+}
+
+function PaginationIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4.6 8.75 2.6 12l2 3.25" />
+      <rect x="6.5" y="8" width="3.2" height="8" rx="1" />
+      <rect x="10.7" y="8" width="3.2" height="8" rx="1" fill="currentColor" stroke="none" />
+      <rect x="14.9" y="8" width="3.2" height="8" rx="1" />
+      <path d="M19.4 8.75 21.4 12l-2 3.25" />
+    </svg>
+  )
+}
+
+function ToDoListIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="3.5" width="4.75" height="4.75" rx="1" />
+      <path d="m4.15 5.9 1.15 1.2 1.7-2.1" />
+      <path d="M10.5 5.9h9" />
+      <rect x="3" y="9.6" width="4.75" height="4.75" rx="1" />
+      <path d="m4.15 12 1.15 1.2 1.7-2.1" />
+      <path d="M10.5 12h7" />
+      <rect x="3" y="15.75" width="4.75" height="4.75" rx="1" />
+      <path d="M10.5 18.1h5.5" />
     </svg>
   )
 }
 
 const pages = [
   {
-    path: '/file-explorer',
-    name: 'File Explorer',
-    description: 'Open folders, then add or delete files',
+    path: "/file-explorer",
+    name: "File Explorer",
+    description: "Open folders, then add or delete files",
     icon: FolderIcon,
     Component: FileExplorer,
     code: fileExplorerCode,
   },
   {
-    path: '/grid-light',
-    name: 'Grid Light',
-    description: 'Light each cell, then watch them clear',
+    path: "/grid-light",
+    name: "Grid Light",
+    description: "Light each cell, then watch them clear",
     icon: GridIcon,
     Component: GridLight,
     code: gridLightCode,
   },
   {
-    path: '/otp-input',
-    name: 'OTP Input',
-    description: 'Type a 6-digit code, one box at a time',
+    path: "/otp-input",
+    name: "OTP Input",
+    description: "Type a 6-digit code, one box at a time",
     icon: OtpIcon,
     Component: OTPInput,
     code: otpInputCode,
   },
   {
-    path: '/kanban-board',
-    name: 'Kanban Board',
-    description: 'Move tasks across columns',
+    path: "/kanban-board",
+    name: "Kanban Board",
+    description: "Move tasks across columns",
     icon: KanbanIcon,
     Component: KanbanBoard,
     code: kanbanBoardCode,
   },
-]
+  {
+    path: "/tab-form-component",
+    name: "Tab Form Component",
+    description: "Create a tab form component",
+    icon: TabFormComponentIcon,
+    Component: TabFormComponent,
+    code: tabFormComponentCode,
+  },
+  {
+    path: "/auto-complete-search",
+    name: "Auto Complete Search",
+    description: "Search for a word, then see suggestions",
+    icon: AutoCompleteSearchIcon,
+    Component: AutoCompleteSearch,
+    code: autoCompleteSearchCode,
+  },
+  {
+    path: "/input-chip",
+    name: "Input Chip",
+    description: "Create a input chip component",
+    icon: InputChipIcon,
+    Component: InputChip,
+    code: inputChipCode,
+  },
+  {
+    path: "/accordion",
+    name: "Accordion",
+    description: "Create a accordion component",
+    icon: AccordionIcon,
+    Component: Accordion,
+    code: accordionCode,
+  },
+  {
+    path: "/nested-checkboxes",
+    name: "Nested Checkboxes",
+    description: "Create a nested checkboxes component",
+    icon: NestedCheckboxesIcon,
+    Component: NestedCheckboxes,
+    code: nestedCheckboxesCode,
+  },
+  {
+    path: "/progress-bar",
+    name: "ProgressBar",
+    description: "Create a progress bar component",
+    icon: ProgressBarIcon,
+    Component: ProgressBar,
+    code: progressBarCode,
+  },
+  {
+    path: "/pagination",
+    name: "Pagination",
+    description: "Create a pagination component",
+    icon: PaginationIcon,
+    Component: Pagination,
+    code: paginationCode,
+  },
+  {
+    path: "/to-do-list",
+    name: "To Do List",
+    description: "Create a to do list component",
+    icon: ToDoListIcon,
+    Component: ToDoList,
+    code: toDoListCode,
+  },
+];
 
 function Home() {
   return (
@@ -233,19 +480,21 @@ function Footer() {
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {pages.map(({ path, Component, code }) => (
-          <Route
-            key={path}
-            path={path}
-            element={<ProblemPage Component={Component} code={code} />}
-          />
-        ))}
-      </Routes>
+    <div className="app-shell">
+      <div className="app-main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {pages.map(({ path, Component, code }) => (
+            <Route
+              key={path}
+              path={path}
+              element={<ProblemPage Component={Component} code={code} />}
+            />
+          ))}
+        </Routes>
+      </div>
       <Footer />
-    </>
+    </div>
   )
 }
 

@@ -50,17 +50,23 @@
   }
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 #root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 h1 {
@@ -81,6 +87,7 @@ hr {
   color: var(--accent);
 }
 
+/* Grid Light */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -105,18 +112,38 @@ hr {
 
 /* File Explorer */
 .mainContainer {
-  color: #fff;
-  padding: 10px;
+  color: var(--text-h);
+}
+
+.mainContainer .mainContainer {
+  padding-left: 16px;
 }
 
 .nodes {
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  border-bottom: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  margin: 6px 0;
+  border-radius: 8px;
+  background: var(--social-bg);
+  border: 1px solid var(--border);
 }
 
+.nodes > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.nodes img {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* OTP Input */
 .otp-container {
   display: flex;
   justify-content: center;
@@ -138,6 +165,7 @@ hr {
 }
 
 /* Kanban Board */
+
 .kanban-board-container {
   display: flex;
   flex-direction: column;
@@ -274,4 +302,283 @@ hr {
 
 .kanban-board-column-items-container-item-delete:hover {
   color: #ff0000;
+}
+
+/* Tab Form Component */
+
+.tab-form-component-tab-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.tab-form-component-tab-button-active {
+  background-color: #313131;
+  color: #fff;
+}
+
+.tab-form-component-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid #313131;
+  background-color: #313131;
+}
+
+.tab-form-component-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.tab-form-component-item-label {
+  font-size: 20px;
+  min-width: 130px;
+  max-width: 130px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.tab-form-component-item-input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #555555;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+}
+
+.tab-form-component-bottom-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.tab-form-component-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 6px;
+  justify-content: end;
+}
+
+.tab-form-component-button {
+  padding: 10px 14px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 4px;
+  border: 1px solid #555555;
+  color: #000000;
+  background-color: #313131;
+  transition: all 0.3s ease;
+}
+
+.tab-form-component-button-previous {
+  background-color: #ffd900;
+  border: 1.5px solid #c1a400;
+}
+
+.tab-form-component-button-next {
+  background-color: #0095ff;
+  border: 1px solid #0078ce;
+}
+
+.tab-form-component-button-save {
+  background-color: #2fff00;
+  border: 1.5px solid #24a400;
+}
+
+.tab-form-component-button-previous:hover {
+  background-color: #c1a400;
+}
+
+.tab-form-component-button-next:hover {
+  background-color: #0078ce;
+}
+
+.tab-form-component-button-save:hover {
+  background-color: #24a400;
+}
+
+.tab-form-component-error {
+  color: #ff0000;
+  font-size: 14px;
+  font-weight: 500;
+  text-wrap: nowrap;
+}
+
+/* Auto Complete Search */
+.auto-complete-search-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.auto-complete-search-input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px 4px 0 0;
+  border: none;
+  outline: none;;
+}
+
+.auto-complete-search-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #313131;
+  background-color: #313131;
+  border-radius: 0 0 4px 4px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.auto-complete-search-suggestions span {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.auto-complete-search-suggestions span:hover,
+.auto-complete-search-suggestions span.active {
+  background-color: #444444;
+}
+
+/* Input Chip */
+.input-chip-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px 20px;
+}
+
+.input-chip-input {
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 1px solid #313131;
+  background-color: #313131;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+}
+
+.input-chip-tags {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.input-chip-tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+  border-radius: 100px;
+  border: none;
+  background-color: #313131;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.input-chip-tag-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.input-chip-tag-remove {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(255, 147, 147);
+}
+
+.input-chip-tag-remove:hover {
+  color: rgb(255, 0, 0);
+}
+
+/* Accordion */
+.accordion-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.accordion-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #313131;
+  border-radius: 4px;
+}
+
+.accordion-item-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.accordion-item-header:hover {
+  background-color: #444444;
+}
+
+.accordion-item-header-active {
+  background-color: #444444;
+  transition: all 0.3s ease;
+}
+
+.accordion-item-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
+}
+
+.accordion-item-content {
+  padding: 10px 20px;
+  border-radius: 0 0 4px 4px;
+  border-top: 1px solid #313131;
+}
+
+.accordion-item-content-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
+}
+
+.accordion-items-container-empty {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
 }

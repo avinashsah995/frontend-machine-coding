@@ -15,7 +15,7 @@ const ListNodes = ({ nodes, handleAddNode, handleDeleteNode }) => {
   };
 
   return (
-    <div className="mainContainer">
+    <div className="nodesMainContainer">
       {nodes.map((node) => {
         return (
           <div key={node.id}>
@@ -29,20 +29,20 @@ const ListNodes = ({ nodes, handleAddNode, handleDeleteNode }) => {
               {node.isFolder && (
                 <>
                   <img
-                    src="https://cdn-icons-png.flaticon.com/512/4732/4732392.png"
+                    src="https://cdn-icons-png.flaticon.com/512/4732/4732459.png"
                     alt=""
                     onClick={() => handleAddNode(node.id, true)}
                   />
 
                   <img
-                    src="https://cdn-icons-png.flaticon.com/512/1091/1091585.png"
+                    src="https://cdn-icons-png.flaticon.com/512/4355/4355340.png"
                     alt=""
                     onClick={() => handleAddNode(node.id, false)}
                   />
                 </>
               )}
               <img
-                src="https://cdn-icons-png.flaticon.com/512/8567/8567786.png"
+                src="https://cdn-icons-png.flaticon.com/512/6711/6711573.png"
                 alt=""
                 onClick={() => handleDeleteNode(node.id)}
               />

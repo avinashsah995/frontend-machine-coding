@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 const InputChip = () => {
   const [chips, setChips] = useState([
-    { id: 1, label: "Tag 1" },
-    { id: 2, label: "Tag 2" },
-    { id: 3, label: "Tag 3" },
+    { id: 1, label: "JavaScript" },
+    { id: 2, label: "React.js" },
+    { id: 3, label: "TypeScript" },
   ]);
   const [chipInput, setChipInput] = useState("");
 

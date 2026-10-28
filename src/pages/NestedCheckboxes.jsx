@@ -99,7 +99,8 @@ const nestedCheckboxesData = [
   },
 ];
 
-const NestedItems = ({ items, handleSelectItem, selectedItems }) => {
+const NestedItems = ({ items, checkedNodes, handleChange }) => {
+
   return (
     <div className="nested-items-container">
       {items.map((item) => {
@@ -108,17 +109,19 @@ const NestedItems = ({ items, handleSelectItem, selectedItems }) => {
             <div className="nested-item-header">
               <input
                 type="checkbox"
+                id={item.id}
                 className="nested-item-checkbox"
-                onChange={(e) => handleSelectItem(item, e.target.checked)}
-                checked={selectedItems[item.id] ?? false}
+                checked={checkedNodes[item.id] ?? false}
+                onChange={(e) => handleChange(e.target.checked, item)}
               />
-              <label className="nested-item-label">{item.title}</label>
+              <label className="nested-item-label" htmlFor={item.id}>{item.title}</label>
             </div>
             {item.children && (
               <NestedItems
+                key={item.id}
                 items={item.children}
-                handleSelectItem={handleSelectItem}
-                selectedItems={selectedItems}
+                checkedNodes={checkedNodes}
+                handleChange={handleChange}
               />
             )}
           </div>
@@ -129,23 +132,38 @@ const NestedItems = ({ items, handleSelectItem, selectedItems }) => {
 };
 
 const NestedCheckboxes = () => {
-  const [selectedItems, setSelectedItems] = useState({});
+  const [checkedNodes, setCheckedNodes] = useState({});
 
-  const handleSelectItem = (item, isChecked) => {
-    const updatedSelectedItems = { ...selectedItems };
+  const handleChange = (isChecked, item) => {
+    const newCheckedNodes = {...checkedNodes};
 
-    const updateSelectedItems = (item) => {
-      updatedSelectedItems[item.id] = isChecked;
+    const updateNodes = (items) => {
+      newCheckedNodes[items.id] = isChecked;
 
-      item?.children?.forEach((child) => {
-        updateSelectedItems(child);
-      });
+      if(items.children) {
+        items.children.forEach((child) => {
+          updateNodes(child);
+        })
+      }
+    }
 
-      setSelectedItems(updatedSelectedItems);
-    };
+    const updateParentNodes = (nodes) => {
+      nodes.forEach((node) => {
+        if(node.children) {
+          updateParentNodes(node.children);
 
-    updateSelectedItems(item);
-  };
+          const allChildChecked = node.children.every((child) => newCheckedNodes[child.id]);
+          newCheckedNodes[node.id] = allChildChecked;
+        }
+
+      })
+    }
+
+    updateNodes(item);
+    updateParentNodes(nestedCheckboxesData);
+    setCheckedNodes(newCheckedNodes);
+  }
+
   return (
     <div className="nested-checkboxes">
       <h1 className="text-center w-full flex ">Nested Checkboxes</h1>
@@ -154,8 +172,8 @@ const NestedCheckboxes = () => {
       <div className="nested-checkboxes-container">
         <NestedItems
           items={nestedCheckboxesData}
-          handleSelectItem={handleSelectItem}
-          selectedItems={selectedItems}
+          checkedNodes={checkedNodes}
+          handleChange={handleChange}
         />
       </div>
     </div>

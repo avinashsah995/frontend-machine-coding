@@ -175,8 +175,9 @@ const Settings = ({ formData, setFormData }) => {
           className="tab-form-component-item-input"
           defaultValue="en"
           value={formData.settings.language}
-          onChange={handleSettingsDataChange}
+          onChange={(e) => handleSettingsDataChange(e)}
         >
+          <option value="">Select Language</option>
           <option value="en">English</option>
           <option value="hi">Hindi</option>
         </select>
@@ -191,8 +192,9 @@ const Settings = ({ formData, setFormData }) => {
           className="tab-form-component-item-input"
           defaultValue="light"
           value={formData.settings.theme}
-          onChange={handleSettingsDataChange}
+          onChange={(e) => handleSettingsDataChange(e)}
         >
+          <option value="">Select Theme</option>
           <option value="light">Light</option>
           <option value="dark">Dark</option>
           <option value="system">System</option>
@@ -211,8 +213,9 @@ const Settings = ({ formData, setFormData }) => {
           className="tab-form-component-item-input"
           defaultValue="enabled"
           value={formData.settings.notifications}
-          onChange={handleSettingsDataChange}
+          onChange={(e) => handleSettingsDataChange(e)}
         >
+          <option value="">Select Notifications</option>
           <option value="enabled">Enabled</option>
           <option value="disabled">Disabled</option>
         </select>
@@ -227,8 +230,9 @@ const Settings = ({ formData, setFormData }) => {
           className="tab-form-component-item-input"
           defaultValue="public"
           value={formData.settings.privacy}
-          onChange={handleSettingsDataChange}
+          onChange={(e) => handleSettingsDataChange(e)}
         >
+          <option value="">Select Profile Visibility</option>
           <option value="public">Public</option>
           <option value="private">Private</option>
         </select>
@@ -243,8 +247,9 @@ const Settings = ({ formData, setFormData }) => {
           className="tab-form-component-item-input"
           defaultValue="Asia/Kolkata"
           value={formData.settings.timezone}
-          onChange={handleSettingsDataChange}
+          onChange={(e) => handleSettingsDataChange(e)}
         >
+          <option value="">Select Timezone</option>
           <option value="Asia/Kolkata">India (IST)</option>
           <option value="UTC">UTC</option>
           <option value="America/New_York">New York (ET)</option>
@@ -299,8 +304,14 @@ const TabFormComponent = () => {
   const ActiveComponent = tabData[activeTab].component;
 
   const validateProfile = (profileData) => {
-    if (!profileData.name || !profileData.email || !profileData.phone || !profileData.address || !profileData.city) {
-      setErrors("All fields are required");
+    if (
+      !profileData.name ||
+      !profileData.email ||
+      !profileData.phone ||
+      !profileData.address ||
+      !profileData.city
+    ) {
+      setErrors("Please fill all the fields");
       return false;
     }
     if (profileData.name.trim().length < 3) {
@@ -326,25 +337,81 @@ const TabFormComponent = () => {
       setErrors("City must be at least 3 characters long");
       return false;
     }
+    setErrors("");
     return true;
   };
+
   const validateInterests = (interestsData) => {
-    return (
-      interestsData.hobbies !== "" &&
-      interestsData.sports !== "" &&
-      interestsData.music !== "" &&
-      interestsData.movies !== "" &&
-      interestsData.travel !== ""
-    );
+    if (
+      !interestsData.hobbies &&
+      !interestsData.sports &&
+      !interestsData.music &&
+      !interestsData.movies &&
+      !interestsData.travel
+    ) {
+      setErrors("Please fill all the fields");
+      return false;
+    }
+    if (interestsData.hobbies === "") {
+      setErrors("Please enter a hobby");
+      return false;
+    }
+    if (interestsData.sports === "") {
+      setErrors("Please enter a sport");
+      return false;
+    }
+    if (interestsData.music === "") {
+      setErrors("Please enter a music");
+      return false;
+    }
+    if (interestsData.movies === "") {
+      setErrors("Please enter a movie");
+      return false;
+    }
+    if (interestsData.travel === "") {
+      setErrors("Please enter a travel");
+      return false;
+    }
+    setErrors("");
+    return true;
   };
+
   const validateSettings = (settingsData) => {
-    return (
-      settingsData.language !== "" &&
-      settingsData.theme !== "" &&
-      settingsData.notifications !== "" &&
-      settingsData.privacy !== "" &&
-      settingsData.timezone !== ""
-    );
+    console.log("settingsData", settingsData);
+    
+    if (
+      !settingsData.language &&
+      !settingsData.theme &&
+      !settingsData.notifications &&
+      !settingsData.privacy &&
+      !settingsData.timezone
+    ) {
+      setErrors("Please fill all the fields");
+      return false;
+    }
+
+    if (settingsData.language === "") {
+      setErrors("Please select a language");
+      return false;
+    }
+    if (settingsData.theme === "") {
+      setErrors("Please select a theme");
+      return false;
+    }
+    if (settingsData.notifications === "") {
+      setErrors("Please select a notification");
+      return false;
+    }
+    if (settingsData.privacy === "") {
+      setErrors("Please select a profile visibility");
+      return false;
+    }
+    if (settingsData.timezone === "") {
+      setErrors("Please select a timezone");
+      return false;
+    }
+    setErrors("");
+    return true;
   };
 
   const handleNextClick = (tabName) => {
@@ -364,13 +431,16 @@ const TabFormComponent = () => {
   };
 
   const handleSave = () => {
-    const isValid = ActiveComponent.validate(formData);
+    const isValid = validateSettings(formData.settings);
     if (isValid) {
       console.log(formData);
+      setErrors("");
+      alert("Form saved successfully");
     } else {
-      alert("Please fill all the fields");
+      setErrors("All fields are required");
     }
   };
+
   return (
     <div className="tab-form-component">
       <h1 className="text-center w-full flex ">Tab Form Component</h1>

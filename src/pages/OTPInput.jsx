@@ -21,23 +21,6 @@ function OTPInput() {
     }
   };
 
-  // const handleKeyDown = (e, index) => {
-  //   if (e.key === "ArrowRight" && index < OTP_DIGITS - 1) {
-  //     inputRef.current[index + 1]?.focus();
-  //   }
-
-  //   if (e.key === "ArrowLeft" && index > 0) {
-  //     const prevInput = inputRef.current[index - 1];
-
-  //     prevInput?.focus();
-  //     prevInput?.setSelectionRange(1, 1);
-  //   }
-
-  //   if (!e.target.value && e.key === "Backspace") {
-  //     inputRef.current[index - 1]?.focus();
-  //   }
-  // };
-
   const handleKeyDown = (e, index) => {
     if (e.key === "ArrowRight" && index < OTP_DIGITS - 1) {
       e.preventDefault();
